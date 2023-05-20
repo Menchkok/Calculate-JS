@@ -8,14 +8,15 @@ const section = document.querySelector('.section');
 let firstOperand = "";
 let secondOperand = "";
 let operationSymbol = '';
+let totalResult;
 
-
-
-// clearC.addEventListener('click',function(){
-//     totalResult.textContent = 0;
-//     firstOperand = 0;
-//     secondOperand = 0;
-// });
+function clear (){
+    totalResult = '';
+    firstOperand = ''
+    secondOperand = '';
+    resultOut.textContent ='';
+}
+clearC.addEventListener('click',clear);
 
 
 const numberSelects = numSelectors.forEach((item)=>{
@@ -45,22 +46,23 @@ function handleClickOperation(item){
 
 
 function resultCalculate(item){
-    let totalResult;
+    
     const {target} = item;
    if(target.textContent == "="){
 
        switch(operationSymbol){
         case "+":
-            totalResult = (+firstOperand)+(+secondOperand);
+            totalResult = (+secondOperand)+(+firstOperand);
             break;
         case "-":
-                totalResult = (firstOperand - secondOperand);
+                totalResult = (secondOperand - firstOperand);
             break;
         case "X":
-                totalResult = (+firstOperand)*(+secondOperand);
+                totalResult = (secondOperand)*(firstOperand);
             break;
         case "/":
-                totalResult = (+firstOperand)/(+secondOperand);
+                totalResult = (secondOperand/firstOperand);
+                console.log(`1- ${firstOperand}  2-${secondOperand}`)
             break;
                     
 
